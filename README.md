@@ -25,13 +25,15 @@ catch (std::exception& e) {
 }
 ```
 
-### static std::string getExtention(std::string mime)
+### static std::vector<std::string> getExtentions(std::string mime)
+
+Get a list of extentions related to the mimetype
 
 ```cpp
-std::string ext;
+std::vector<std::string> exts;
 
 try {
-    ext = nk125::MimeTypes::getExtention("text/plain");
+    exts = nk125::MimeTypes::getExtention("text/plain");
     
     // txt
 }
