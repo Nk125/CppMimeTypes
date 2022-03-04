@@ -358,7 +358,7 @@ namespace nk125 {
             {"zip", "application/zip"},
         };
         
-        std::string str_to_lower(std::string in_data) {
+        static std::string str_to_lower(std::string in_data) {
             std::string buffer = in_data;
 
             std::transform(buffer.begin(), buffer.end(), buffer.begin(),
