@@ -387,10 +387,8 @@ namespace nk125 {
             std::vector<std::string> exts;
             
             for (auto i = types.begin(); i != types.end(); i++) {
-                std::string ext = i->second;
-                
-                if (ext == mime) {
-                    exts.push_back(ext);
+                if (i->second == mime) {
+                    exts.push_back(i->first);
                 }
             }
             
