@@ -3,6 +3,7 @@
 #include <map>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace nk125 {
     class MimeTypes {
@@ -382,15 +383,23 @@ namespace nk125 {
             }
         }
 
-        static std::string getExtention(std::string mime) {
+        static std::vector<std::string> getExtentions(std::string mime) {
+            std::vector<std::string> exts;
+            
             for (auto i = types.begin(); i != types.end(); i++) {
-                if (i->second == mime) {
-                    return i->first;
+                std::string ext = i->second;
+                
+                if (ext == mime) {
+                    exts.push_back(ext);
                 }
             }
-
-            throw std::runtime_error("Extention not found");
-            return "";
+            
+            if (exts.empty()) {
+                throw std::runtime_error("Extention not found");
+            }
+            else {
+                return exts;
+            }
         }
     };
 }
