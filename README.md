@@ -35,7 +35,7 @@ std::vector<std::string> exts;
 try {
     exts = nk125::MimeTypes::getExtention("text/plain");
     
-    // txt
+    // ["conf", "def", "in", "ini", "list", "log", "text", "txt"]
 }
 catch (std::exception& e) {
     std::cerr << e.what(); // Extention not found
