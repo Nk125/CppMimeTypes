@@ -359,7 +359,7 @@ namespace nk125 {
             {"zip", "application/zip"},
         };
         
-        static std::string str_to_lower(std::string in_data) {
+        static std::string str_to_lower(const std::string& in_data) {
             std::string buffer = in_data;
 
             std::transform(buffer.begin(), buffer.end(), buffer.begin(),
@@ -371,19 +371,18 @@ namespace nk125 {
         }
 
         public:
-        static std::string getType(std::string filename) {
+        static std::string getType(const std::string& filename) {
             std::string ext = str_to_lower(filename.substr(filename.find_last_of(".") + 1));
             auto found = types.find(ext);
 
-            if (found != types.end()) {
-                return found->second;
-            }
-            else {
+            if (found == types.end()) {
                 throw std::runtime_error("Mimetype not found");
             }
+            
+            return found->second;
         }
 
-        static std::vector<std::string> getExtentions(std::string mime) {
+        static std::vector<std::string> getExtentions(const std::string& mime) {
             std::vector<std::string> exts;
             
             for (auto i = types.begin(); i != types.end(); i++) {
@@ -395,9 +394,8 @@ namespace nk125 {
             if (exts.empty()) {
                 throw std::runtime_error("Extention not found");
             }
-            else {
-                return exts;
-            }
+            
+            return exts;
         }
     };
 }
